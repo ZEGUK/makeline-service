@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: makeline-service
+  namespace: petstore
+  labels:
+    kubernetes.azure.com/generator: devhub
+spec:
+  type: LoadBalancer
+  selector:
+    app: makeline-service
+  ports:
+    - protocol: TCP
+      port: 3001
+      targetPort: 3001

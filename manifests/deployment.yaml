@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: makeline-service
+  labels:
+    app: makeline-service
+    kubernetes.azure.com/generator: devhub
+  namespace: petstore
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: makeline-service
+  template:
+    metadata:
+      labels:
+        app: makeline-service
+    spec:
+      containers:
+        - name: makeline-service
+          image: petstoredemo.azurecr.io/image-workflow-1717574866631:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3001
